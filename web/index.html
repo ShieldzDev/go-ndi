@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#101923">
+  <title>LocShare — live location</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <main id="landing" class="shell">
+    <header class="brand"><span class="brand-icon">◉</span><div><strong>LocShare</strong><small>Be there together</small></div></header>
+    <section class="card">
+      <p class="eyebrow">PRIVATE · LIVE · TEMPORARY</p>
+      <h1>Meet up, without the guesswork.</h1>
+      <p class="intro">Create a room and share your live location with friends. No account needed.</p>
+      <button id="create" class="primary">Create a room</button>
+      <div class="divider"><span>OR JOIN A ROOM</span></div>
+      <form id="join-form">
+        <label for="code">Room code</label>
+        <input id="code" autocomplete="off" maxlength="6" placeholder="e.g. ABC234" required>
+        <label for="name">Your name</label>
+        <input id="name" maxlength="32" autocomplete="nickname" placeholder="Name" required>
+        <label for="password">Room password <span class="optional">if required</span></label>
+        <input id="password" type="password" maxlength="72" autocomplete="current-password" placeholder="Optional password">
+        <button class="primary" type="submit">Join room</button>
+      </form>
+      <p id="message" class="message" role="status"></p>
+    </section>
+    <p class="privacy">Your location is shared only with people in your room, and is never saved.</p>
+  </main>
+  <main id="room-view" class="room-view hidden">
+    <header class="room-header">
+      <a class="brand compact" href="/"><span class="brand-icon">◉</span><strong>LocShare</strong></a>
+      <div class="room-code">ROOM <strong id="room-code"></strong><button id="copy" aria-label="Copy room code">Copy</button></div>
+      <button id="leave" class="quiet">Leave</button>
+    </header>
+    <div id="map"></div>
+    <aside class="people card"><h2>In this room <span id="member-count"></span></h2><ul id="members"></ul></aside>
+    <div id="location-status" class="location-status">Connecting…</div>
+    <button id="locate" class="locate" aria-label="Center map on everyone">◎</button>
+  </main>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="/static/app.js" defer></script>
+</body>
+</html>
